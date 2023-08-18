@@ -1,0 +1,12 @@
+import 'package:cinemapedia/domain/entities/actor.dart';
+import 'package:cinemapedia/infrastructure/models/moviedb/credits_response.dart';
+
+class ActorMapper {
+  static Actor castToEntity(Cast cast) => Actor(
+      id: cast.id,
+      name: cast.name,
+      profilePath: cast.profilePath != null
+          ? "https://image.tmdb.org/t/p/w500${cast.profilePath}"
+          : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAACKCAMAAABCWSJWAAAAOVBMVEX///+ZmZmVlZXCwsKSkpLw8PC/v7/h4eHa2tr8/Pz5+fmysrLn5+evr6+np6e3t7fLy8vU1NSfn59DP+HlAAAELklEQVR4nO1b2dqjIAyVVcXd93/Y0bZ/qxYSErTjBedu5psyxxCyHEJRZGRkZGRkZGRkZGTUzlSTGppuQTOoqTSu/h88zGR7obWWUjwg5fIH0dvJ/JSGa+0s/zjssfz1bFv3IyJm7P00PnT6cbFNffVulc2yDyi0bsqriXSwQbam6a4kY4YIg3zI6OEqF3ZWR1rkQ8Ze4sBlTzHJC7q/YJcUg8iDjDqZiOGY5M8wp3pMy+WxQoq2OC3EVGyTvAxTncVkJB4cj2HGc5hMiTZ52GU6g8l4ApOFywl2qZJ35wmZ7C9thE1koGDYQ7dJRGqD/gd6bqxStpnxrJAWX3p4fSn+yqTatUog/7hPsAkS7aVUu2znkFOfkgNKmEm3t3i95geQjGbnRjeD6zaeaF43IPueWzNY6BPl4M8rYHWlLY+JgRYN+2APmpJ3igZw34NRAszicuAwAX0WiuNgpmB5bgcZZQYMbUBv7+hMStBngQhRI+5ON0sDrQfnEzBvyYbKxMHRDf4xHOeoh0iByyHZBD7PxPDvwNWwIwmHAWLIbWGpAAmaoN8CIYmxWBoV7NcHgKFBiKQNEjOFiUEqshS3XcxCOUMTQiXlMC+/pnQiiN+lhDhBc5YasTCyGPYhoo9voR2yFJIO0V+L+MgCFk0PQCETV2IIsR8ur58Il054e0YoWiLaZDkH9hv1M0Fq5uFc+OISCHMxIiZU7hyXi2nZdeexi4ObD+QzPGgilluL/i9/QVqyN+LLpy5qvdXQ+0ZVxUrd8QVuLJWla7alee6TKW0skUuorGTmbrB26OZ4IhdRedKh0KBRiXPbVcPfI5pRvNvGHOaFxjyMU7XBNNpex1xJEA4zHuL0rFp/uG3VjIYWQojDlFrZV0BudSUWXQjKKaI2CVT3rGBZjpAOYWXFRhQ+NVg+EYoEqHSKlYJB6Tm+dIISfXQ/BUg+hIISqE4JnV1QZyH1ZKHmgyaOhyp/0jVIoCUjNTDhLyK1ZP5GldjsFqGNJjWqgXhLFoC9R5H4Rb6ynbo9K3xbJGmihk/qodn1Bc9OU9X17x3iGMWXzgi58IlvWRDqTcP4Di50bf0olvIk8e/ahy6WfknI3Gvr43U5Q0I+CuuaeZVz2GnJENaPRQvr/Cyo987Cuyjb7TLXVY5Ox1tmV0CRj+Abu7DAvJoq7IYLf8Bhe81Kz2IvbK8xz6HCvsbceu4pVPiXu1tZ7QwqaWNP747mDCoJgwDFVvjsFBMfLSBx/OpTn0om3tuTNjRS4HJ/LNJHaeobDRjdaezqTsNodxrRW/vfBMNI4r0lgvuMcxY3GnIt7jT6+xiIJjO5ZiC6eIyJE9z3wjHxFfHD8+La4fkHmbs8KVhhFP7QQv3qEQr0/ET/8vnJE/5HOd2vH+W8UDtTbp4qjf/rqVJGRkZGRkZGRkbGzfAPbc0rp0vPZrwAAAAASUVORK5CYII=",
+      character: cast.character);
+}
