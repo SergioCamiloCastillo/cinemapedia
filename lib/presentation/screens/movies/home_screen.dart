@@ -3,6 +3,7 @@ import 'package:cinemapedia/presentation/providers/movies/movies_slides_show_pro
 import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:cinemapedia/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,7 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: _HomeView(),
       bottomNavigationBar: CustomButtonNavigation(),
     );
@@ -19,9 +20,7 @@ class HomeScreen extends StatelessWidget {
 }
 
 class _HomeView extends ConsumerStatefulWidget {
-  const _HomeView({
-    super.key,
-  });
+  const _HomeView();
 
   @override
   _HomeViewState createState() => _HomeViewState();
@@ -40,21 +39,22 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   @override
   Widget build(BuildContext context) {
     final initialLoading = ref.watch(initialLoadingProvider);
-    if (initialLoading) return FullScreenLoader();
+    if (initialLoading) return const FullScreenLoader();
+    FlutterNativeSplash.remove();
     final moviesSlideshow = ref.watch(popularMoviesProvider);
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
     final popularMovies = ref.watch(nowPlayingMoviesProvider);
     final uncomingMovies = ref.watch(uncomingMoviesProvider);
     final topRatedMovies = ref.watch(topRatedMoviesProvider);
 
-    if (moviesSlideshow.length == 0) return CircularProgressIndicator();
+    if (moviesSlideshow.isEmpty) return const CircularProgressIndicator();
 
     return CustomScrollView(
       slivers: [
-        SliverAppBar(
+        const SliverAppBar(
           floating: true,
           flexibleSpace: FlexibleSpaceBar(
-            title: const CustomAppBar(),
+            title: CustomAppBar(),
           ),
         ),
         SliverList(
